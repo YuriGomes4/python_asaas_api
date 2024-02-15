@@ -1,0 +1,4 @@
+.directory
+/testes
+*.pyc
+/venv
