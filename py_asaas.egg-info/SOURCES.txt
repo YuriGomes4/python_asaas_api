@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+py_asaas/__init__.py
+py_asaas/obj.py
+py_asaas/wrapper.py
+py_asaas.egg-info/PKG-INFO
+py_asaas.egg-info/SOURCES.txt
+py_asaas.egg-info/dependency_links.txt
+py_asaas.egg-info/requires.txt
+py_asaas.egg-info/top_level.txt
