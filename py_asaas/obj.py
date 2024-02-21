@@ -22,7 +22,7 @@ def cliente(name=None, email=None, phone=None, mobile_phone=None, cpf_cnpj=None,
         }
         return customer_data
 
-def assinatura(customer_id=None, billing_type=None, next_due_date=None, value=None, cycle=None, description=None, discount_value=None, discount_due_date_limit_days=None, fine_value=None, interest_value=None):
+def assinatura(customer_id=None, billing_type=None, next_due_date=None, value=None, cycle=None, description=None, discount_value=None, discount_due_date_limit_days=None, fine_value=None, interest_value=None, end_date=None):
     billing_data = {
         "customer": customer_id,
         "billingType": billing_type,
@@ -30,6 +30,7 @@ def assinatura(customer_id=None, billing_type=None, next_due_date=None, value=No
         "value": value,
         "cycle": cycle,
         "description": description,
+        "endDate": end_date,
     }
 
     if discount_value or discount_due_date_limit_days:
@@ -40,6 +41,10 @@ def assinatura(customer_id=None, billing_type=None, next_due_date=None, value=No
 
     if interest_value:
         billing_data["interest"] = {"value": interest_value}
+
+    for key in list(billing_data.keys()):
+        if billing_data[key] == None:
+            del billing_data[key]
 
     return billing_data
 

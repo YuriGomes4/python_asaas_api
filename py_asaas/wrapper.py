@@ -167,6 +167,35 @@ class assinatura(auth):
         else:
             return {}
         
+    def atualizar_assinatura(self, id_assinatura, assinatura):
+        """
+        Descrição da função
+        """
+        #Descrição da função
+
+        asct = True #Acesso Só Com Token
+
+        if asct and (self.access_token == "" or self.access_token == None or type(self.access_token) != str):
+            print("Token inválido")
+            return {}
+
+        url = self.base_url+f"/v3/subscriptions/{id_assinatura}"
+
+        headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'access_token': self.access_token
+        }
+
+        response = self.request("PUT", url=url, headers=headers, json=assinatura)
+
+        if response:
+
+            return response.json()
+        
+        else:
+            return {}
+        
     def ver_assinatura(self, id_assinatura):
         """
         Descrição da função
