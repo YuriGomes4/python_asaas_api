@@ -253,3 +253,32 @@ class assinatura(auth):
         
         else:
             return {}
+        
+    def remover_assinatura(self, id_assinatura):
+        """
+        Descrição da função
+        """
+        #Descrição da função
+
+        asct = True #Acesso Só Com Token
+
+        if asct and (self.access_token == "" or self.access_token == None or type(self.access_token) != str):
+            print("Token inválido")
+            return {}
+        
+        url = self.base_url+f"/v3/subscriptions/{id_assinatura}"
+
+        headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'access_token': self.access_token
+        }
+
+        response = self.request("DELETE", url=url, headers=headers)
+
+        if response:
+                
+                return response.json()
+
+        else:
+            return {}
